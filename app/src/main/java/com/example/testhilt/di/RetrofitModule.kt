@@ -20,12 +20,11 @@ object RetrofitModule {
 
     @Singleton
     @Provides
-    fun providesOkHttpClient(interceptor: Interceptor): OkHttpClient =
+    fun providesOkHttpClient(): OkHttpClient =
         OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
-            .addInterceptor(interceptor)
             .build()
 
     @Provides
