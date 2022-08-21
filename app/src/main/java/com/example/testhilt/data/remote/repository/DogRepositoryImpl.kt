@@ -8,5 +8,5 @@ import javax.inject.Inject
 class DogRepositoryImpl @Inject constructor(
     private val dataSource: DogDataSource
 ) : DogRepository {
-    override suspend fun getDog(): BaseResponse<DogResponse> = dataSource.getDog()
+    override suspend fun getDog(): Result<BaseResponse<DogResponse>> = dataSource.getDog()
 }

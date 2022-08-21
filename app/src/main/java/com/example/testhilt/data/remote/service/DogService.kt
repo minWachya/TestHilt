@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface DogService {
     @GET("api/breeds/image/random")
-    suspend fun getDog(): BaseResponse<DogResponse>
+    suspend fun getDog(): Result<BaseResponse<DogResponse>>
 }

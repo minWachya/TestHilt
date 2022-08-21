@@ -6,5 +6,5 @@ import com.example.testhilt.data.remote.service.DogService
 import javax.inject.Inject
 
 class DogDataSourceImpl @Inject constructor(private val dogService: DogService) : DogDataSource {
-    override suspend fun getDog(): BaseResponse<DogResponse> = dogService.getDog()
+    override suspend fun getDog(): Result<BaseResponse<DogResponse>> = dogService.getDog()
 }

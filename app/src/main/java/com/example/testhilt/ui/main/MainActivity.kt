@@ -1,7 +1,8 @@
-package com.example.testhilt
+package com.example.testhilt.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.testhilt.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
