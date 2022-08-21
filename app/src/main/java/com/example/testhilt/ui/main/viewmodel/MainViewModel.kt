@@ -18,13 +18,22 @@ class MainViewModel @Inject constructor(
     private val _response = MutableLiveData<DogResponse>()
     val response: LiveData<DogResponse> = _response
 
-    fun fetchDogResponse() = viewModelScope.launch {
+    init {
+        fetchDogResponse()
+    }
+
+    private fun fetchDogResponse() = viewModelScope.launch {
         viewModelScope.launch {
             repository.getDog().onSuccess {
                 _response.postValue(it.data as DogResponse)
+                Log.d("mmm", "get dog api success")
             }.onFailure {
                 Log.d("mmm", "get dog api fail")
             }
         }
+    }
+
+    fun clickBtnFetch() {
+        fetchDogResponse()
     }
 }

@@ -9,6 +9,8 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -16,8 +18,8 @@ import javax.inject.Singleton
 object RetrofitModule {
     private const val BASE_URL = "https://dog.ceo/"
 
-    @Provides
     @Singleton
+    @Provides
     fun providesOkHttpClient(interceptor: Interceptor): OkHttpClient =
         OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
