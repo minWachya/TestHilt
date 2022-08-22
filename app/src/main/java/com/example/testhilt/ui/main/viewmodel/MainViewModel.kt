@@ -23,16 +23,13 @@ class MainViewModel @Inject constructor(
     }
 
     private fun fetchDogResponse() = viewModelScope.launch {
-        val result = repository.getDog()
-        Log.d("mmm result", result.toString())
-//        viewModelScope.launch {
-//            repository.getDog().onSuccess { response ->
-//                _response.value = response
-//                Log.d("mmm", "get dog api success")
-//            }.onFailure {
-//                Log.d("mmm", "get dog api fail")
-//            }
-//        }
+        kotlin.runCatching {
+            repository.getDog()
+        }.onSuccess {
+            _response.value = DogResponse(it.message, it.status)
+        }.onFailure {
+            Log.d("mmm get dog api fail", "${it.message}")
+        }
     }
 
     fun clickBtnFetch() {
